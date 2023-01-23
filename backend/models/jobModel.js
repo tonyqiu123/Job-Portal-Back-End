@@ -13,8 +13,6 @@ const jobSchema = new Schema({
     numApplicants: { type: Number, default: 0 },
     date: { type: String,  default: () => moment().format("MMM DD YYYY") },
     remote: { type: Boolean, default: false },
-    shortlisted: {type: Boolean, default: false},
-    applied: {type: Boolean, default: false }
   });
 
 const Job = mongoose.model('Job', jobSchema);
