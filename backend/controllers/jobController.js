@@ -29,13 +29,15 @@ const updateJob = asyncHandler(async (req,res) => {
     if (!job)
         res.status(400).json({ message: `Job ${req.params.id} not found` })
 
-    try {
-        const updatedJob = await Job.findByIdAndUpdate(req.params.id, req.body, {
+    
+    const updatedJob = await Job.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
-        })
-    } catch {
+    })
+
+    if (!updatedJob)
         res.status(400).json({ message: "bad request, improper types for field" })
-    }
+    else
+        res.status(200).json(updatedJob)
    
 
     res.status(200).json(updatedJob)
