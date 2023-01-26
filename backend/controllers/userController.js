@@ -5,8 +5,8 @@ const jwt = require('jsonwebtoken')
 const mongoose = require('mongoose')
 
 
-const getUsers = asyncHandler(async (req,res) => {
-    const users = await User.find()
+const getUser = asyncHandler(async (req,res) => {
+    const users = await User.findById(req.params.id)
     res.status(200).json(users)
 })
 
@@ -95,5 +95,5 @@ const generateToken = (id) => {
 }
 
 module.exports = {
- getUsers, createUser, updateUser, deleteUser, loginUser
+ getUser, createUser, updateUser, deleteUser, loginUser
 }
