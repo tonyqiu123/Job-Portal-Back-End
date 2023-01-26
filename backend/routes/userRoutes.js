@@ -3,7 +3,7 @@ const router = express.Router()
 const { getUser, createUser, loginUser, updateUser, deleteUser } = require('../controllers/userController')
 const { protect } = require('../middleware/authMiddleware')
 
-router.get('/:id', getUser)
+router.get('/:id', protect, getUser)
 
 router.post('/', createUser)
 
