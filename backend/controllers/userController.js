@@ -57,13 +57,14 @@ const loginUser = asyncHandler(async (req,res) => {
     }
 })
 const updateUser = asyncHandler(async (req,res) => {
-    const user = await User.findById(req.params.id)
+    const objectId = mongoose.Types.ObjectId(req.params.id)
+    const user = await User.findById(objectId)
 
     if (!user)
         res.status(400).json({ message: `User ${req.params.id} not found` })
 
     try {
-        const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
+        const updatedUser = await User.findByIdAndUpdate(objectId, req.body, {
             new: true,
         })
         res.status(200).json(updatedUser)
