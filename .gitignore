@@ -1,3 +1,6 @@
 node_modules
+<<<<<<< HEAD
 .env
+=======
+>>>>>>> b65e7dd01bb3001d69af713e999e3ba49de79e04
 # test
